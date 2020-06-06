@@ -1,0 +1,21 @@
+.Sidebar
+  .Sidebar__top
+    .Sidebox
+      .Sidebox__name
+        masa
+      .Sidebox__icon
+        = link_to "#", class: "Sidebox__icon--edit" do
+          = icon('far', 'edit')
+          %span<>
+        = link_to "#", class: "Sidebox__icon--cog" do
+          = icon('fas', 'cog')
+  .Sidebar__group-info
+    .Group
+      %p.Group__name techcamp
+      %p.Group__text まだメッセージがありません
+    .Group
+      %p.Group__name チームらんまる
+      %p.Group__text こんにちは
+    .Group
+      %p.Group__name Tokyo Squads
+      %p.Group__text Hi! Welcome!

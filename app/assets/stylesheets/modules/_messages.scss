@@ -1,0 +1,179 @@
+@mixin sideTextColor {
+  color: #ffffff;
+}
+
+@mixin  mainTextColor {
+  color: #333333;
+}
+
+$btnColor:#38aef0;
+
+* {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  display:flex;
+  .Sidebar {
+    height:100vh;
+    width:300px;
+    font-weight: bold;
+    @include sideTextColor;
+    &__top {
+      height: 100px;
+      background-color: #253141;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0px 20px;
+      .Sidebox {
+        height: 20px;
+        width: 260px;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        font-weight: bold;
+        @include sideTextColor;
+        &__name {
+          width: 200px;
+        }
+        &__icon {
+          width: 60px;
+          text-align: right;
+          &--edit {
+            @include sideTextColor;
+          }
+          &--cog {
+            @include sideTextColor;
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+    &__group-info {
+      height: calc(100vh - 100px);
+      background-color: #2f3e51;
+      padding: 0 20px;
+      .Group {
+        padding-top: 20px;
+        padding-bottom: 40px;
+        font-weight: normal;
+        &__name {
+          font-size: 15px;
+        }
+        &__text {
+          font-size: 11px;
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+
+  .Mainchat {
+    height: 100vh;
+    width: calc(100vw - 300px);
+    &__top {
+      height: 100px;
+      background-color: #ffffff;
+      padding: 0 40px;
+      border-bottom: solid 1px #eee;
+      .Display {
+        height: 100px;
+        display: flex;
+        justify-content:space-between;
+        align-items: center;
+        &__left {
+          &--groupName {
+            font-size: 20px;
+            @include mainTextColor;
+            margin-top: 35px;
+            margin-bottom : 15px;
+          }
+          &--groupMember {
+            font-size: 12px;
+            color: #999999;
+          }
+        }
+        &__right {
+          height: 40px;
+          width: 72px;
+          border: 1px solid $btnColor;
+          display: flex;
+          align-items:center;
+          justify-content: center;
+          color:$btnColor;
+          text-decoration: none;
+        }
+        &__right:hover {
+          background-color:$btnColor;
+          color: #ffffff;
+        }
+      }
+    }
+    &__chatSpace {
+      height: calc(100vh - 100px - 90px);
+      background-color: #fafafa;
+      padding: 40px 40px 0 40px;
+      .MessageBox {
+        margin-bottom: 46px;
+        .MessageInfo {
+          display: flex;
+          &__name {
+            font-size: 16px;
+            font-weight: bold;
+            @include mainTextColor;
+          }
+          &__date {
+            font-size: 12px;
+            color: #999999;
+            padding-left: 10px;
+          }
+        }
+        .MessageContent {
+          margin-top: 12px;
+          &__text {
+            font-size: 14px;
+            color: #434a54;
+          }
+        }
+      }
+    }
+
+    &__bottom {
+      height: 90px;
+      background-color: #d2d2d2;
+      padding: 20px 40px 20px 50px;
+      .Form {
+        display: flex;
+        justify-content: space-between;
+        .Form__contents {
+          display: flex;
+          position: relative;
+          width: 100%;
+          .Form__inputContent {
+            height: 50px;
+            width: 100%;
+            border: none;
+            padding: 0 10px;
+          }
+          .Form__inputImage {
+            font-size: 25px;
+            line-height: 50px;
+            position: absolute;
+            right: 10px;
+            .Hidden {
+              display: none;
+            }
+          }
+        }
+        .Form__submit {
+          padding: 0 30px;
+          margin-left: 15px;
+          border: none;
+          background-color:$btnColor;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}

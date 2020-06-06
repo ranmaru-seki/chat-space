@@ -1,0 +1,34 @@
+.Mainchat
+  .Mainchat__top
+    .Display
+      .Display__left
+        %p.Display__left--groupName Test
+        %p.Display__left--groupMember Member:masa
+      = link_to "#", class: "Display__right" do
+        Edit
+
+
+  .Mainchat__chatSpace
+    .MessageBox
+      .MessageInfo
+        %p.MessageInfo__name masa
+        %p.MessageInfo__date 2019/11/20(Wed) 17:34:01
+      .MessageContent
+        %p.MessageContent__text おはよう！
+
+    .MessageBox
+      .MessageInfo
+        %p.MessageInfo__name masa
+        %p.MessageInfo__date 2019/11/20(Wed) 17:34:01
+      .MessageContent
+        %p.MessageContent__text おはよう！
+
+  .Mainchat__bottom
+    .Form
+      .Form__contents
+        %input.Form__inputContent{:placeholder => "type a message", :type => "text"}/
+        %label{class: "Form__inputImage"}
+          = icon('far', 'image')
+          %input.Hidden{type: "file"}
+
+      %input.Form__submit{:type => "submit", :value => "Send"}/
