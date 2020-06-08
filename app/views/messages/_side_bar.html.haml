@@ -2,12 +2,12 @@
   .Sidebar__top
     .Sidebox
       .Sidebox__name
-        masa
+        = current_user.name
       .Sidebox__icon
         = link_to "#", class: "Sidebox__icon--edit" do
           = icon('far', 'edit')
           %span<>
-        = link_to "#", class: "Sidebox__icon--cog" do
+        = link_to edit_user_path(current_user), class: "Sidebox__icon--cog" do
           = icon('fas', 'cog')
   .Sidebar__group-info
     .Group
