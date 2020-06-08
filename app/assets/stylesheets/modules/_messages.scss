@@ -58,12 +58,17 @@ $btnColor:#38aef0;
         padding-top: 20px;
         padding-bottom: 40px;
         font-weight: normal;
-        &__name {
-          font-size: 15px;
-        }
-        &__text {
-          font-size: 11px;
-          margin-top: 5px;
+        &__link {
+          text-decoration: none;
+          &--name {
+            font-size: 15px;
+            @include sideTextColor;
+          }
+          &--text {
+            font-size: 11px;
+            margin-top: 5px;
+            @include sideTextColor;
+          }
         }
       }
     }
