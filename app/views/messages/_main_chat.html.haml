@@ -2,33 +2,34 @@
   .Mainchat__top
     .Display
       .Display__left
-        %p.Display__left--groupName Test
-        %p.Display__left--groupMember Member:masa
-      = link_to "#", class: "Display__right" do
+        .Display__left--groupName
+          = @group.name
+        .Display__left--groupMember
+          Member：
+          - @group.users.each do |user|
+            = user.name
+      = link_to edit_group_path(@group), class: "Display__right" do
         Edit
 
-
   .Mainchat__chatSpace
-    .MessageBox
-      .MessageInfo
-        %p.MessageInfo__name masa
-        %p.MessageInfo__date 2019/11/20(Wed) 17:34:01
-      .MessageContent
-        %p.MessageContent__text おはよう！
-
-    .MessageBox
-      .MessageInfo
-        %p.MessageInfo__name masa
-        %p.MessageInfo__date 2019/11/20(Wed) 17:34:01
-      .MessageContent
-        %p.MessageContent__text おはよう！
+    - @messages.each do |message|
+      .MessageBox
+        .MessageInfo
+          .MessageInfo__name
+            = message.user.name
+          .MessageInfo__date
+            = message.user.created_at.strftime("%Y年%m月%d日 %H時%M分")
+        .MessageContent
+          - if message.content.present?
+            .MessageContent__text
+              = message.content
+          = image_tag message.image.url, class: 'Message__image' if message.image.present?
 
   .Mainchat__bottom
-    .Form
+    = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
       .Form__contents
-        %input.Form__inputContent{:placeholder => "type a message", :type => "text"}/
-        %label{class: "Form__inputImage"}
+        = f.text_field :content, class: 'Form__inputContent', placeholder: 'type a message'
+        = f.label :image, class: 'Form__inputImage' do
           = icon('far', 'image')
-          %input.Hidden{type: "file"}
-
-      %input.Form__submit{:type => "submit", :value => "Send"}/
+          = f.file_field :image, class: 'Hidden'
+      = f.submit 'Send', class: 'Form__submit'
