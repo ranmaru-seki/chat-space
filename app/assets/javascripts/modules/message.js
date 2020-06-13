@@ -2,7 +2,7 @@ $(function(){
   function buildHTML(message){
     if (message.image) {
       let html =
-        `<div class="MessageBox">
+        `<div class="MessageBox" data-message-id=${message.id}>
           <div class="MessageInfo">
             <div class="MessageInfo__name">
               ${message.user_name}
@@ -21,7 +21,7 @@ $(function(){
       return html
     } else {
       let html =
-        `<div class="MessageBox">
+        `<div class="MessageBox" data-message-id=${message.id}>
           <div class="MessageInfo">
             <div class="MessageInfo__name">
               ${message.user_name}
@@ -46,21 +46,22 @@ $(function(){
     let url = $(this).attr('action');
     $.ajax({
       url: url,
-      type: 'POST',
-      dataType: 'json',
+      type: "POST",
       data: formData,
+      dataType: 'json',
       processData: false,
-      contentType: false,
+      contentType: false
     })
-    .done(function(message) {
-      let html = buildHTML(message)
-      $('.Mainchat__chatSpace').append(html)
+    .done(function(data){
+      let html = buildHTML(data);
+      $('.Mainchat__chatSpace').append(html);
+      $('form')[0].reset();
       $('.Mainchat__chatSpace').animate({ scrollTop: $('.Mainchat__chatSpace')[0].scrollHeight});
-      $('.Form')[0].reset()
-      $('.Form__submit').prop("disabled", false)
+      $('.Form__submit').prop("disabled", false);
     })
     .fail(function() {
-      alert('メッセージ送信に失敗しました')
-    })
-  })
+      alert("メッセージ送信に失敗しました");
+      $('.Form__submit').prop("disabled", false);
+    });
+  });
 });

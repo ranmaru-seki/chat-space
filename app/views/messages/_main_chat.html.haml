@@ -13,7 +13,7 @@
 
   .Mainchat__chatSpace
     - @messages.each do |message|
-      .MessageBox
+      .MessageBox{data: {message: {id: message.id}}}
         .MessageInfo
           .MessageInfo__name
             = message.user.name
